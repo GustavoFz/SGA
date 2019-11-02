@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import messages from '../messages.json'
 
-import { AuthOptions, AuthProvider, User } from './auth.types';
-
 @Injectable({
   providedIn: 'root'
 })
@@ -18,7 +16,6 @@ export class MessageService {
     } else {
       return 'Ocorreu um erro.';
     }
-
   }
 
 }

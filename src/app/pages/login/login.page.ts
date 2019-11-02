@@ -71,7 +71,7 @@ export class LoginPage implements OnInit {
       });
       this.navCtrl.navigateForward(this.route.snapshot.queryParamMap.get('redirect') || '/home');
     } catch (e) {
-      console.log('Auth error: ', e);
+      console.error('Auth error: ', e);
       await this.overlayService.toast({
         message: this.messageService.getMessage(e.code)
       });
