@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Ferramenta } from '../interfaces/ferramenta';
 import { map } from 'rxjs/operators';
 
@@ -7,7 +7,7 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class FerramentaService {
-  private ferramentaCollection = this.afs.collection<Ferramenta>;
+  private ferramentaCollection: AngularFirestoreCollection<Ferramenta>;
 
   constructor(private afs: AngularFirestore) {
     this.ferramentaCollection = this.afs.collection<Ferramenta>('Ferramenta');

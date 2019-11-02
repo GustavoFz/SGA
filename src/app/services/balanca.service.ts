@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Balanca } from '../interfaces/balanca';
 import { map } from 'rxjs/operators';
 
@@ -7,7 +7,7 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class BalancaService {
-  private balancaCollection = this.afs.collection<Balanca>;
+  private balancaCollection: AngularFirestoreCollection<Balanca>;
 
   constructor(private afs: AngularFirestore) {
     this.balancaCollection = this.afs.collection<Balanca>('Balanca');
