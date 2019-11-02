@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Cadastro de clientes</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="form-container">
+    <form [formGroup]="clienteForm" (submit)="onSubmit()">
+      <ion-item class="ion-margin-top" lines="none">
+        <ion-label position="floating">CNPJ</ion-label>
+        <ion-input
+          type="number"
+          placeholder="000.000.000/0001-00"
+          formControlName="cnpj"
+          autofocus="true"
+        >
+        </ion-input>
+      </ion-item>
+
+      <ion-item class="ion-margin-top" lines="none">
+        <ion-label position="floating">Nome</ion-label>
+        <ion-input type="text" placeholder="Nome do cliente" formControlName="nome"></ion-input>
+      </ion-item>
+
+      <ion-item class="ion-margin-top" lines="none">
+        <ion-label position="floating">Razão Social</ion-label>
+        <ion-input type="text" placeholder="Razão Social" formControlName="razaoSocial"></ion-input>
+      </ion-item>
+
+      <ion-item class="ion-margin-top" lines="none">
+        <ion-label position="floating">Telefone</ion-label>
+        <ion-input
+          type="number"
+          placeholder="(69) 90000-0000"
+          formControlName="telefone"
+        ></ion-input>
+      </ion-item>
+
+      <ion-item class="ion-margin-top" lines="none">
+        <ion-label position="floating">CEP</ion-label>
+        <ion-input type="number" placeholder="00000-000" formControlName="cep"></ion-input>
+      </ion-item>
+
+      <ion-button color="primary" expand="block" type="submit" [disabled]="clienteForm.invalid">
+        Cadastrar
+      </ion-button>
+    </form>
+  </div>
+</ion-content>

@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Cadastro de ferramentas</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="form-container">
+    <form [formGroup]="ferramentaForm" (submit)="onSubmit()">
+      <ion-item class="ion-margin-top" lines="none">
+        <ion-label position="floating">Nome</ion-label>
+        <ion-input type="number" placeholder="Nomes" formControlName="nome" autofocus="true">
+        </ion-input>
+      </ion-item>
+
+      <ion-item class="ion-margin-top" lines="none">
+        <ion-label position="floating">Código de Certificação</ion-label>
+        <ion-input
+          type="text"
+          placeholder="00000000000-0"
+          formControlName="codCerificacao"
+        ></ion-input>
+      </ion-item>
+
+      <ion-item class="ion-margin-top" lines="none">
+        <ion-label position="floating">Peso (kg)</ion-label>
+        <ion-input type="text" placeholder="10,5" formControlName="peso"></ion-input>
+      </ion-item>
+
+      <ion-button color="primary" expand="block" type="submit" [disabled]="ferramentaForm.invalid">
+        Cadastrar
+      </ion-button>
+    </form>
+  </div>
+</ion-content>
