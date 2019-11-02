@@ -20,6 +20,10 @@ export class AuthService {
     return this.authState$.pipe(map(user => user !== null));
   }
 
+  getAuth() {
+    return this.afAuth.auth;
+  }
+
   authenticate({ isSignIn, provider, user }: AuthOptions): Promise<auth.UserCredential> {
     let operation: Promise<auth.UserCredential>;
 

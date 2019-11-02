@@ -1,18 +1,51 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { OverlayService } from 'src/app/services/overlay.service';
+import { ActivatedRoute } from '@angular/router';
+import { ClienteService } from 'src/app/services/cliente.service';
+import { Subscription } from 'rxjs';
+import { Cliente } from 'src/app/interfaces/cliente';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-cadastro-cliente',
   templateUrl: './cadastro-cliente.page.html',
   styleUrls: ['./cadastro-cliente.page.scss']
 })
-export class CadastroClientePage implements OnInit {
+export class CadastroClientePage implements OnInit, OnDestroy {
+  private clienteId: string = null;
   clienteForm: FormGroup;
+  public cliente: Cliente = {};
+  private clienteSubscription: Subscription;
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private authService: AuthService,
+    private clienteService: ClienteService,
+    private overlayService: OverlayService,
+    private activatedRoute: ActivatedRoute,
+  ) {
+    this.clienteId = this.activatedRoute.snapshot.params['id'];
+
+    if (this.clienteId) {
+      this.loadCliente();
+    }
+  }
 
   ngOnInit() {
     this.createForm();
+  }
+
+  ngOnDestroy() {
+    if (this.clienteSubscription) {
+      this.clienteSubscription.unsubscribe();
+    }
+  }
+
+  loadCliente() {
+    this.clienteSubscription = this.clienteService.getCliente(this.clienteId).subscribe(data => {
+      this.cliente = data;
+    });
   }
 
   private createForm(): void {
@@ -25,7 +58,25 @@ export class CadastroClientePage implements OnInit {
     });
   }
 
-  public onSubmit(): void {
-    console.log(this.clienteForm);
+  async onSubmit() {
+    console.log(this.clienteForm.value);
+    const loading = await this.overlayService.loading();
+
+    this.cliente = this.clienteForm.value;
+
+    try {
+      if (this.clienteId) {
+        await this.clienteService.updateCliente(this.clienteId, this.cliente);
+        console.log('ATUALIZOU CLIENTE');
+      } else {
+        this.cliente.createdAt = new Date().getTime();
+        await this.clienteService.addCliente(this.cliente);
+        console.log('CRIOU CLIENTE');
+      }
+    } catch (e) {
+      this.overlayService.alert({ message: 'Erro ao salvar cliente' });
+    } finally {
+      loading.dismiss();
+    }
   }
 }
