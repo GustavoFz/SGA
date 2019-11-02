@@ -45,6 +45,7 @@ export class CadastroClientePage implements OnInit, OnDestroy {
   loadCliente() {
     this.clienteSubscription = this.clienteService.getCliente(this.clienteId).subscribe(data => {
       this.cliente = data;
+      this.clienteForm.setValue({...data});
     });
   }
 
@@ -69,7 +70,7 @@ export class CadastroClientePage implements OnInit, OnDestroy {
         await this.clienteService.updateCliente(this.clienteId, this.cliente);
         console.log('ATUALIZOU CLIENTE');
       } else {
-        this.cliente.createdAt = new Date().getTime();
+        this.cliente.createdAt = new Date();
         await this.clienteService.addCliente(this.cliente);
         console.log('CRIOU CLIENTE');
       }

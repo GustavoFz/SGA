@@ -5,5 +5,5 @@ export interface Cliente {
   razaoSocial?: string;
   telefone?: string;
   cep?: string;
-  createdAt?: number;
+  createdAt?: Date;
 }

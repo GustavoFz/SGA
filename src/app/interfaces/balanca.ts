@@ -1,4 +1,4 @@
 export interface Balanca {
   id?: string;
-  createdAt?: number;
+  createdAt?: Date;
 }
