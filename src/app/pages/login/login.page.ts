@@ -73,7 +73,7 @@ export class LoginPage implements OnInit {
     } catch (e) {
       console.error('Auth error: ', e);
       await this.overlayService.toast({
-        message: this.messageService.getMessage(e.code)
+        message: e.message
       });
     } finally {
       loading.dismiss();
