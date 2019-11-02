@@ -13,6 +13,10 @@ const routes: Routes = [
     loadChildren: './pages/cadastro-cliente/cadastro-cliente.module#CadastroClientePageModule'
   },
   {
+    path: 'cadastro-cliente/:id',
+    loadChildren: './pages/cadastro-cliente/cadastro-cliente.module#CadastroClientePageModule'
+  },
+  {
     path: 'cadastro-ferramenta',
     loadChildren:
       './pages/cadastro-ferramenta/cadastro-ferramenta.module#CadastroFerramentaPageModule'
@@ -21,8 +25,10 @@ const routes: Routes = [
     path: 'cadastro-balanca',
     loadChildren: './pages/cadastro-balanca/cadastro-balanca.module#CadastroBalancaPageModule'
   },
-  { path: 'consulta-cliente', loadChildren: './pages/consulta-cliente/consulta-cliente.module#ConsultaClientePageModule' },
-  { path: 'cadastro-cliente/:id', loadChildren: './pages/cadastro-cliente/cadastro-cliente.module#CadastroClientePageModule' }
+  {
+    path: 'consulta-cliente',
+    loadChildren: './pages/consulta-cliente/consulta-cliente.module#ConsultaClientePageModule'
+  }
 ];
 
 @NgModule({
