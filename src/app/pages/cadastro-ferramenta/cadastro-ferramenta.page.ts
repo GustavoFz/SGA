@@ -64,14 +64,14 @@ export class CadastroFerramentaPage implements OnInit, OnDestroy {
     try {
       if (this.ferramentaId) {
         await this.ferramentaService.updateFerramenta(this.ferramentaId, this.ferramenta);
-        console.log('ATUALIZOU FERRAMENTA');
+        this.overlayService.toast({message: 'Ferramenta atualizada com sucesso.'});
       } else {
         this.ferramenta.createdAt = new Date();
         await this.ferramentaService.addFerramenta(this.ferramenta);
-        console.log('CRIOU FERRAMENTA');
+        this.overlayService.toast({message: 'Ferramenta criada com sucesso.'});
       }
     } catch (e) {
-      this.overlayService.alert({ message: 'Erro ao salvar ferramenta' });
+      this.overlayService.alert({ message: 'Erro ao salvar ferramenta', buttons: ['Ok'] });
     } finally {
       loading.dismiss();
     }

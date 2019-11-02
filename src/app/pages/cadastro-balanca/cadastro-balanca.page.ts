@@ -65,14 +65,14 @@ export class CadastroBalancaPage implements OnInit, OnDestroy {
     try {
       if (this.balancaId) {
         await this.balancaService.updateBalanca(this.balancaId, this.balanca);
-        console.log('ATUALIZOU BALANÇA');
+        this.overlayService.toast({message: 'Balança atualizada com sucesso.'});
       } else {
         this.balanca.createdAt = new Date();
         await this.balancaService.addBalanca(this.balanca);
-        console.log('CRIOU BALANÇA');
+        this.overlayService.toast({message: 'Balança criada com sucesso.'});
       }
     } catch (e) {
-      this.overlayService.alert({ message: 'Erro ao salvar balanca' });
+      this.overlayService.alert({ message: 'Erro ao salvar balanca', buttons: ['Ok'] });
     } finally {
       loading.dismiss();
     }
