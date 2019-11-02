@@ -20,12 +20,11 @@ export class CadastroClientePage implements OnInit, OnDestroy {
 
   constructor(
     private formBuilder: FormBuilder,
-    private authService: AuthService,
     private clienteService: ClienteService,
     private overlayService: OverlayService,
     private activatedRoute: ActivatedRoute,
   ) {
-    this.clienteId = this.activatedRoute.snapshot.params['id'];
+    this.clienteId = this.activatedRoute.snapshot.params.id;
 
     if (this.clienteId) {
       this.loadCliente();
