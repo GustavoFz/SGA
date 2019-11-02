@@ -1,0 +1,4 @@
+{
+  "auth/wrong-password": "Senha incorreta.",
+  "auth/too-many-requests": "Parece que você tentou fazer login muitas vezes. Tente novamente mais tarde"
+}

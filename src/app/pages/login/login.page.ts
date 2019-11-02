@@ -6,6 +6,7 @@ import { NavController } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth.service';
 import { AuthProvider } from 'src/app/services/auth.types';
 import { OverlayService } from 'src/app/services/overlay.service';
+import { MessageService } from 'src/app/services/message.service';
 
 @Component({
   selector: 'app-login',
@@ -28,7 +29,8 @@ export class LoginPage implements OnInit {
     private fb: FormBuilder,
     private navCtrl: NavController,
     private route: ActivatedRoute,
-    private overlayService: OverlayService
+    private overlayService: OverlayService,
+    private messageService: MessageService
   ) {}
 
   ngOnInit() {
@@ -71,7 +73,7 @@ export class LoginPage implements OnInit {
     } catch (e) {
       console.log('Auth error: ', e);
       await this.overlayService.toast({
-        message: e.message
+        message: this.messageService.getMessage(e.code)
       });
     } finally {
       loading.dismiss();
