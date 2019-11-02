@@ -16,7 +16,7 @@ export class HomePage {
     {
       title: 'Cadastro de clientes',
       url: '/cadastro-cliente',
-      icon: 'list'
+      icon: 'person-add'
     },
     {
       title: 'Cadastro de balanças',
@@ -26,12 +26,12 @@ export class HomePage {
     {
       title: 'Cadastro de ferramentas',
       url: '/cadastro-ferramenta',
-      icon: 'list'
+      icon: 'construct'
     },
     {
       title: 'Clientes',
       url: '/consulta-cliente',
-      icon: 'list'
+      icon: 'people'
     },
     {
       title: 'Ferramentas',

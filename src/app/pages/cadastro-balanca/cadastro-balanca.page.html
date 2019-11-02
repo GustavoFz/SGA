@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Cadastro de balanças</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="form-container">
+    <form [formGroup]="balancaForm" (submit)="onSubmit()">
+      <ion-item class="ion-margin-top" lines="none">
+        <ion-label position="floating">Modelo</ion-label>
+        <ion-input type="text" placeholder="xxxxx2455" formControlName="modelo" autofocus="true">
+        </ion-input>
+      </ion-item>
+
+      <ion-item class="ion-margin-top" lines="none">
+        <ion-label position="floating">Fabricante</ion-label>
+        <ion-input type="text" placeholder="xxxxx" formControlName="fabricante"></ion-input>
+      </ion-item>
+
+      <ion-item class="ion-margin-top" lines="none">
+        <ion-label position="floating">Carga Maxima(Kg)</ion-label>
+        <ion-input type="text" placeholder="1000.00" formControlName="cargaMaxima"></ion-input>
+      </ion-item>
+
+      <ion-button color="primary" expand="block" type="submit" [disabled]="balancaForm.invalid">
+        Cadastrar
+      </ion-button>
+    </form>
+  </div>
+</ion-content>

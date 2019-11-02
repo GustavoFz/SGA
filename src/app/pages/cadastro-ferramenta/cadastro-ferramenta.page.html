@@ -12,22 +12,22 @@
     <form [formGroup]="ferramentaForm" (submit)="onSubmit()">
       <ion-item class="ion-margin-top" lines="none">
         <ion-label position="floating">Nome</ion-label>
-        <ion-input type="number" placeholder="Nomes" formControlName="nome" autofocus="true">
+        <ion-input type="text" placeholder="Nomes" formControlName="nome" autofocus="true">
         </ion-input>
       </ion-item>
 
       <ion-item class="ion-margin-top" lines="none">
         <ion-label position="floating">Código de Certificação</ion-label>
         <ion-input
-          type="text"
+          type="number"
           placeholder="00000000000-0"
-          formControlName="codCerificacao"
+          formControlName="codCertificacao"
         ></ion-input>
       </ion-item>
 
       <ion-item class="ion-margin-top" lines="none">
         <ion-label position="floating">Peso (kg)</ion-label>
-        <ion-input type="text" placeholder="10,5" formControlName="peso"></ion-input>
+        <ion-input type="number" placeholder="10,5" formControlName="peso"></ion-input>
       </ion-item>
 
       <ion-button color="primary" expand="block" type="submit" [disabled]="ferramentaForm.invalid">
