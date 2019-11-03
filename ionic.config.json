@@ -1,5 +1,8 @@
 {
   "name": "SGA",
-  "integrations": {},
-  "type": "angular"
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular",
+  "id": "c2f51c5e"
 }
