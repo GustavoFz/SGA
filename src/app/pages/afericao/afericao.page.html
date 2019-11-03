@@ -1,9 +1,64 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>afericao</ion-title>
+    <ion-title>Afericao</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content fullscreen class="ion-padding" scroll-y="false">
+  <form [formGroup]="afericaoForm" (submit)="onSubmit()">
+    <ion-slides [options]="slideOpts" #mySlider>
+      <ion-slide>
+        <img src="https://ionicframework.com/docs/demos/api/slides/slide-4.png" />
+        <h2>Welcome to the <b>SLIDE 1</b></h2>
+        <ion-item class="ion-margin-top" lines="none">
+          <ion-label position="floating">CNPJ</ion-label>
+          <ion-input
+            type="number"
+            placeholder="000.000.000/0001-00"
+            formControlName="cnpj"
+            autofocus="true"
+          >
+          </ion-input>
+        </ion-item>
+        <ion-button fill="clear" (click)="nextSlide()"
+          >Continue <ion-icon slot="end" name="arrow-forward"></ion-icon
+        ></ion-button>
+      </ion-slide>
 
+      <ion-slide>
+        <img src="https://ionicframework.com/docs/demos/api/slides/slide-2.png" />
+        <h2>Slide 2</h2>
+        <ion-item class="ion-margin-top" lines="none">
+          <ion-label position="floating">Nome</ion-label>
+          <ion-input type="text" placeholder="Nome do cliente" formControlName="nome"></ion-input>
+        </ion-item>
+        <ion-button fill="clear" type="submit"
+          >Continue <ion-icon slot="end" name="arrow-forward"></ion-icon
+        ></ion-button>
+      </ion-slide>
+
+      <ion-slide>
+        <img src="https://ionicframework.com/docs/demos/api/slides/slide-3.png" />
+        <h2>What is Ionic Pro?</h2>
+        <p>
+          <b>Ionic Pro</b> is a powerful set of services and features built on top of Ionic
+          Framework that brings a totally new level of app development agility to mobile dev teams.
+        </p>
+        <ion-button fill="clear"
+          >Continue <ion-icon slot="end" name="arrow-forward"></ion-icon
+        ></ion-button>
+      </ion-slide>
+
+      <ion-slide>
+        <img src="https://ionicframework.com/docs/demos/api/slides/slide-3.png" />
+        <h2>Ready to Play?</h2>
+        <ion-button fill="clear"
+          >Continue <ion-icon slot="end" name="arrow-forward"></ion-icon
+        ></ion-button>
+      </ion-slide>
+    </ion-slides>
+  </form>
 </ion-content>
