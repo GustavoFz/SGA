@@ -44,15 +44,18 @@
         <ion-label position="floating">CEP</ion-label>
         <ion-input type="number" placeholder="00000-000" formControlName="cep"></ion-input>
       </ion-item>
-
-
     </form>
   </div>
 </ion-content>
 <ion-footer>
   <ion-toolbar>
-    <ion-button color="primary" expand="block" (click)="onSubmit()" [disabled]="clienteForm.invalid">
-        Cadastrar
-      </ion-button>
+    <ion-button
+      color="primary"
+      expand="block"
+      (click)="onSubmit()"
+      [disabled]="clienteForm.invalid"
+    >
+      Cadastrar
+    </ion-button>
   </ion-toolbar>
 </ion-footer>
