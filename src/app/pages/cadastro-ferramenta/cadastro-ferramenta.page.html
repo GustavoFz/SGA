@@ -9,7 +9,7 @@
 
 <ion-content>
   <div class="form-container">
-    <form [formGroup]="ferramentaForm" (submit)="onSubmit()">
+    <form [formGroup]="ferramentaForm">
       <ion-item class="ion-margin-top" lines="none">
         <ion-label position="floating">Nome</ion-label>
         <ion-input type="text" placeholder="Nomes" formControlName="nome" autofocus="true">
@@ -29,10 +29,18 @@
         <ion-label position="floating">Peso (kg)</ion-label>
         <ion-input type="number" placeholder="10,5" formControlName="peso"></ion-input>
       </ion-item>
-
-      <ion-button color="primary" expand="block" type="submit" [disabled]="ferramentaForm.invalid">
-        Cadastrar
-      </ion-button>
     </form>
   </div>
 </ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-button
+      color="primary"
+      expand="block"
+      (click)="onSubmit()"
+      [disabled]="clienteForm.invalid"
+    >
+      Cadastrar
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

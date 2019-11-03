@@ -9,7 +9,7 @@
 
 <ion-content>
   <div class="form-container">
-    <form [formGroup]="clienteForm" (submit)="onSubmit()">
+    <form [formGroup]="clienteForm">
       <ion-item class="ion-margin-top" lines="none">
         <ion-label position="floating">CNPJ</ion-label>
         <ion-input
@@ -45,9 +45,14 @@
         <ion-input type="number" placeholder="00000-000" formControlName="cep"></ion-input>
       </ion-item>
 
-      <ion-button color="primary" expand="block" type="submit" [disabled]="clienteForm.invalid">
-        Cadastrar
-      </ion-button>
+
     </form>
   </div>
 </ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-button color="primary" expand="block" (click)="onSubmit()" [disabled]="clienteForm.invalid">
+        Cadastrar
+      </ion-button>
+  </ion-toolbar>
+</ion-footer>
