@@ -25,7 +25,7 @@ import { environment } from 'src/environments/environment';
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
-    AngularFirestoreModule
+    AngularFirestoreModule.enablePersistence({ experimentalTabSynchronization: true })
   ],
   providers: [
     StatusBar,
