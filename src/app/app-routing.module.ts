@@ -28,7 +28,10 @@ const routes: Routes = [
   {
     path: 'consulta-cliente',
     loadChildren: './pages/consulta-cliente/consulta-cliente.module#ConsultaClientePageModule'
-  }
+  },
+  { path: 'afericao', loadChildren: './pages/afericao/afericao.module#AfericaoPageModule' },
+  { path: 'consulta-balanca', loadChildren: './pages/consulta-balanca/consulta-balanca.module#ConsultaBalancaPageModule' },
+  { path: 'consulta-ferramenta', loadChildren: './pages/consulta-ferramenta/consulta-ferramenta.module#ConsultaFerramentaPageModule' }
 ];
 
 @NgModule({

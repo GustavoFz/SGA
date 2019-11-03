@@ -1,6 +1,9 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>Consulta de clientes</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 <ion-searchbar placeholder="Pesquisar cliente" (ionChange)="onSearchChange($event)" [debounce]="250"></ion-searchbar>
