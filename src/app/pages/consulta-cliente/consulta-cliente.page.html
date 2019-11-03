@@ -6,7 +6,7 @@
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-<ion-searchbar placeholder="Pesquisar cliente" (ionChange)="onSearchChange($event)" [debounce]="250"></ion-searchbar>
+<ion-searchbar placeholder="Pesquisar cliente" [(ngModel)]="searchTerm" (ionInput)="setFilteredItems()"></ion-searchbar>
 <ion-content>
   <ion-list *ngIf="!clientes.length">
     <ion-item *ngFor="let item of [0, 1, 2]">
@@ -28,7 +28,7 @@
   </ion-list>
 
   <ion-list>
-    <ion-item-sliding *ngFor="let cliente of clientes">
+    <ion-item-sliding *ngFor="let cliente of jsonData">
       <ion-item button [routerLink]="['/cliente', cliente.id]">
         <ion-label>
           {{ cliente.nome }}
