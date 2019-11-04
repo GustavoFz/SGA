@@ -31,7 +31,8 @@ const routes: Routes = [
   },
   { path: 'afericao', loadChildren: './pages/afericao/afericao.module#AfericaoPageModule' },
   { path: 'consulta-balanca', loadChildren: './pages/consulta-balanca/consulta-balanca.module#ConsultaBalancaPageModule' },
-  { path: 'consulta-ferramenta', loadChildren: './pages/consulta-ferramenta/consulta-ferramenta.module#ConsultaFerramentaPageModule' }
+  { path: 'consulta-ferramenta', loadChildren: './pages/consulta-ferramenta/consulta-ferramenta.module#ConsultaFerramentaPageModule' },
+  { path: 'detalhe-cliente', loadChildren: './pages/detalhe-cliente/detalhe-cliente.module#DetalheClientePageModule' }
 ];
 
 @NgModule({
