@@ -6,7 +6,11 @@
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-<ion-searchbar placeholder="Pesquisar cliente" [(ngModel)]="searchTerm" (ionInput)="setFilteredItems()"></ion-searchbar>
+<ion-searchbar
+  placeholder="Pesquisar cliente"
+  [(ngModel)]="searchTerm"
+  (ionChange)="setFilteredItems()"
+></ion-searchbar>
 <ion-content>
   <ion-list *ngIf="!clientes.length">
     <ion-item *ngFor="let item of [0, 1, 2]">
