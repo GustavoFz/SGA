@@ -15,17 +15,14 @@
         <h2>Welcome to the <b>SLIDE 1</b></h2>
         <ion-item class="ion-margin-top" lines="none">
           <ion-label position="floating">CNPJ</ion-label>
-          <ion-input
-            type="number"
-            placeholder="000.000.000/0001-00"
-            formControlName="cnpj"
-            autofocus="true"
-          >
-          </ion-input>
         </ion-item>
-        <ion-button fill="clear" (click)="nextSlide()"
-          >Continue <ion-icon slot="end" name="arrow-forward"></ion-icon
-        ></ion-button>
+        <ion-button (click)="modalCliente()">CLIENTE</ion-button>
+        <ion-button (click)="modalBalanca()">BALANÇA</ion-button>
+        <ion-button (click)="modalFerramenta()">FERRAMENTAS</ion-button>
+        <ion-button fill="clear" (click)="nextSlide()">
+          Continue
+          <ion-icon slot="end" name="arrow-forward"></ion-icon>
+        </ion-button>
       </ion-slide>
 
       <ion-slide>
