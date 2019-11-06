@@ -11,8 +11,7 @@ export class AfericaoPage implements OnInit {
   afericaoForm: FormGroup;
   slideOpts = {
     initialSlide: 0,
-    speed: 400,
-    allowTouchMove: false
+    speed: 400
   };
 
   constructor(private formBuilder: FormBuilder) {}

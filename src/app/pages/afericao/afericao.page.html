@@ -9,7 +9,7 @@
 
 <ion-content fullscreen class="ion-padding" scroll-y="false">
   <form [formGroup]="afericaoForm" (submit)="onSubmit()">
-    <ion-slides [options]="slideOpts" #mySlider>
+    <ion-slides [options]="slideOpts" #mySlider class="swiper-no-swiping">
       <ion-slide>
         <img src="https://ionicframework.com/docs/demos/api/slides/slide-4.png" />
         <h2>Welcome to the <b>SLIDE 1</b></h2>

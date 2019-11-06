@@ -14,10 +14,12 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from 'src/environments/environment';
+import { ModalClientesComponent } from './components/modal-clientes/modal-clientes.component';
+import { ComponentsModule } from './components/components.module';
 
 @NgModule({
   declarations: [AppComponent],
-  entryComponents: [],
+  entryComponents: [ModalClientesComponent],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
@@ -25,7 +27,8 @@ import { environment } from 'src/environments/environment';
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
-    AngularFirestoreModule.enablePersistence({ synchronizeTabs: true })
+    AngularFirestoreModule.enablePersistence({ synchronizeTabs: true }),
+    ComponentsModule
   ],
   providers: [
     StatusBar,
