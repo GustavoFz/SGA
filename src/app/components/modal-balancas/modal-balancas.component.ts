@@ -10,17 +10,11 @@ import { BalancaService } from 'src/app/services/balanca.service';
 export class ModalBalancasComponent implements OnInit {
   clienteIdd = null;
   @Input() clienteId: string;
+  balancaService: any;
   constructor(navParams: NavParams, balancaService: BalancaService) {
     this.clienteIdd = navParams.get('clienteId');
-    console.log(this.clienteIdd);
-    console.log(balancaService.getBalancasByCliente(this.clienteIdd));
   }
 
   ngOnInit() {
-    console.log(this.getBalancaById(this.clienteIdd));
-  }
-
-  async getBalancaById(id) {
-    await this.balancaService.getBalancasByCliente(id);
   }
 }

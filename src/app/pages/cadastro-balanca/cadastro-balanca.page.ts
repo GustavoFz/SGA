@@ -6,9 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Balanca } from 'src/app/interfaces/balanca';
 import { Subscription } from 'rxjs';
 import { ModalController } from '@ionic/angular';
-import { ConsultaClientePage } from '../consulta-cliente/consulta-cliente.page';
 import { ModalClientesComponent } from 'src/app/components/modal-clientes/modal-clientes.component';
-import undefined = require('firebase/empty-import');
 
 @Component({
   selector: 'app-cadastro-balanca',

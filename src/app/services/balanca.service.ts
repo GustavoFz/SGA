@@ -26,23 +26,6 @@ export class BalancaService {
     );
   }
 
-  getBalancasByCliente(clienteId: string) {
-    let balancaCollection = this.afs.collection<Balanca>('Balanca', ref =>
-      ref.where('clienteId', '==', clienteId)
-    );
-
-    return balancaCollection.snapshotChanges().pipe(
-      map(actions => {
-        return actions.map(a => {
-          const data = a.payload.doc.data();
-          const id = a.payload.doc.id;
-
-          return { id, ...data };
-        });
-      })
-    );
-  }
-
   addBalanca(balanca: Balanca) {
     return this.balancaCollection.add(balanca);
   }
