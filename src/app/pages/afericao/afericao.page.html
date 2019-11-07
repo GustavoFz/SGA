@@ -2,7 +2,7 @@
   <ion-toolbar>
     <ion-title>Afericao</ion-title>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="home"></ion-back-button>
+      <ion-icon slot="end" name="close"></ion-icon>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -11,14 +11,35 @@
   <form [formGroup]="afericaoForm" (submit)="onSubmit()">
     <ion-slides [options]="slideOpts" #mySlider class="swiper-no-swiping">
       <ion-slide>
-        <img src="https://ionicframework.com/docs/demos/api/slides/slide-4.png" />
-        <h2>Welcome to the <b>SLIDE 1</b></h2>
-        <ion-item class="ion-margin-top" lines="none">
-          <ion-label position="floating">CNPJ</ion-label>
-        </ion-item>
-        <ion-button (click)="modalCliente()">CLIENTE</ion-button>
-        <ion-button (click)="modalBalanca()">BALANÇA</ion-button>
-        <ion-button (click)="modalFerramenta()">FERRAMENTAS</ion-button>
+        <h2>Dados para Aferição</h2>
+        <ion-list>
+          <ion-item class="ion-margin-top">
+            <ion-label>Cliente:</ion-label>
+            <ion-button slot="end" (click)="modalCliente()">
+              <ion-icon slot="icon-only" name="search"></ion-icon>
+            </ion-button>
+          </ion-item>
+          <ion-item class="ion-margin-top">
+            <ion-label>Balanca:</ion-label>
+            <ion-button slot="end" (click)="modalBalanca()">
+              <ion-icon slot="icon-only" name="search"></ion-icon>
+            </ion-button>
+          </ion-item>
+          <ion-item class="ion-margin-top" lines="none">
+            <ion-label>Ferramentas:</ion-label>
+            <ion-button slot="end" (click)="modalFerramenta()">
+              <ion-icon slot="icon-only" name="search"></ion-icon>
+            </ion-button>
+          </ion-item>
+          <ion-item class="ion-margin-top">
+            <ion-label position="floating">Temperatura</ion-label>
+            <ion-input type="number" placeholder="0.00" formControlName="temperatura"></ion-input>
+          </ion-item>
+          <ion-item class="ion-margin-top">
+            <ion-label position="floating">Umidade do ar</ion-label>
+            <ion-input type="number" placeholder="0.00" formControlName="umidade"></ion-input>
+          </ion-item>
+        </ion-list>
         <ion-button fill="clear" (click)="nextSlide()">
           Continue
           <ion-icon slot="end" name="arrow-forward"></ion-icon>
@@ -26,34 +47,66 @@
       </ion-slide>
 
       <ion-slide>
-        <img src="https://ionicframework.com/docs/demos/api/slides/slide-2.png" />
-        <h2>Slide 2</h2>
-        <ion-item class="ion-margin-top" lines="none">
-          <ion-label position="floating">Nome</ion-label>
-          <ion-input type="text" placeholder="Nome do cliente" formControlName="nome"></ion-input>
-        </ion-item>
+        <h2>Pesagem de Centro</h2>
+        <ion-list>
+          <ion-item class="ion-margin-top">
+            <ion-label position="floating">Peso obtido</ion-label>
+            <ion-input type="number" placeholder="0.00" formControlName="pesoCentro"></ion-input>
+          </ion-item>
+        </ion-list>
+
+        <ion-button fill="clear" (click)="prevSlide()">
+          Voltar
+          <ion-icon slot="start" name="arrow-back"></ion-icon>
+        </ion-button>
+        <ion-button fill="clear" (click)="nextSlide()"
+          >Continue <ion-icon slot="end" name="arrow-forward"></ion-icon
+        ></ion-button>
+      </ion-slide>
+
+      <ion-slide>
+        <h2>Pesagem de Canto</h2>
+        <ion-list>
+          <ion-item class="ion-margin-top">
+            <ion-label position="floating">Peso canto 1</ion-label>
+            <ion-input type="number" placeholder="0.00" formControlName="pesoCanto1"></ion-input>
+          </ion-item>
+          <ion-item class="ion-margin-top">
+            <ion-label position="floating">Peso canto 2</ion-label>
+            <ion-input type="number" placeholder="0.00" formControlName="pesoCanto2"></ion-input>
+          </ion-item>
+          <ion-item class="ion-margin-top">
+            <ion-label position="floating">Peso canto 3</ion-label>
+            <ion-input type="number" placeholder="0.00" formControlName="pesoCanto3"></ion-input>
+          </ion-item>
+          <ion-item class="ion-margin-top">
+            <ion-label position="floating">Peso canto 4</ion-label>
+            <ion-input type="number" placeholder="0.00" formControlName="pesoCanto4"></ion-input>
+          </ion-item>
+        </ion-list>
+        <ion-button fill="clear" (click)="prevSlide()">
+          Voltar
+          <ion-icon slot="start" name="arrow-back"></ion-icon>
+        </ion-button>
+        <ion-button fill="clear" (click)="nextSlide()"
+          >Continue <ion-icon slot="end" name="arrow-forward"></ion-icon
+        ></ion-button>
+      </ion-slide>
+
+      <ion-slide>
+        <h2>Teste de Carga Maxima</h2>
+        <ion-list>
+          <ion-item class="ion-margin-top">
+            <ion-label position="floating">Peso Maximo</ion-label>
+            <ion-input type="number" placeholder="0.00" formControlName="cargaMaxima"></ion-input>
+          </ion-item>
+        </ion-list>
+        <ion-button fill="clear" (click)="prevSlide()">
+          Voltar
+          <ion-icon slot="start" name="arrow-back"></ion-icon>
+        </ion-button>
         <ion-button fill="clear" type="submit"
-          >Continue <ion-icon slot="end" name="arrow-forward"></ion-icon
-        ></ion-button>
-      </ion-slide>
-
-      <ion-slide>
-        <img src="https://ionicframework.com/docs/demos/api/slides/slide-3.png" />
-        <h2>What is Ionic Pro?</h2>
-        <p>
-          <b>Ionic Pro</b> is a powerful set of services and features built on top of Ionic
-          Framework that brings a totally new level of app development agility to mobile dev teams.
-        </p>
-        <ion-button fill="clear"
-          >Continue <ion-icon slot="end" name="arrow-forward"></ion-icon
-        ></ion-button>
-      </ion-slide>
-
-      <ion-slide>
-        <img src="https://ionicframework.com/docs/demos/api/slides/slide-3.png" />
-        <h2>Ready to Play?</h2>
-        <ion-button fill="clear"
-          >Continue <ion-icon slot="end" name="arrow-forward"></ion-icon
+          >Finalizar <ion-icon slot="end" name="arrow-forward"></ion-icon
         ></ion-button>
       </ion-slide>
     </ion-slides>
