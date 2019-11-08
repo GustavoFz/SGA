@@ -1,38 +1,66 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './guards/auth.guard';
-
-// ADICIONAR canLoad: [AuthGuard] AS ROTAS
+import { LoginGuard } from './guards/login.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: 'home', loadChildren: './pages/home/home.module#HomePageModule' },
-  { path: 'login', loadChildren: './pages/login/login.module#LoginPageModule' },
+  {
+    path: 'home',
+    loadChildren: './pages/home/home.module#HomePageModule',
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'login',
+    loadChildren: './pages/login/login.module#LoginPageModule',
+    canActivate: [LoginGuard]
+  },
   {
     path: 'cadastro-cliente',
-    loadChildren: './pages/cadastro-cliente/cadastro-cliente.module#CadastroClientePageModule'
+    loadChildren: './pages/cadastro-cliente/cadastro-cliente.module#CadastroClientePageModule',
+    canActivate: [AuthGuard]
   },
   {
     path: 'cadastro-cliente/:id',
-    loadChildren: './pages/cadastro-cliente/cadastro-cliente.module#CadastroClientePageModule'
+    loadChildren: './pages/cadastro-cliente/cadastro-cliente.module#CadastroClientePageModule',
+    canActivate: [AuthGuard]
   },
   {
     path: 'cadastro-ferramenta',
     loadChildren:
-      './pages/cadastro-ferramenta/cadastro-ferramenta.module#CadastroFerramentaPageModule'
+      './pages/cadastro-ferramenta/cadastro-ferramenta.module#CadastroFerramentaPageModule',
+    canActivate: [AuthGuard]
   },
   {
     path: 'cadastro-balanca',
-    loadChildren: './pages/cadastro-balanca/cadastro-balanca.module#CadastroBalancaPageModule'
+    loadChildren: './pages/cadastro-balanca/cadastro-balanca.module#CadastroBalancaPageModule',
+    canActivate: [AuthGuard]
   },
   {
     path: 'consulta-cliente',
     loadChildren: './pages/consulta-cliente/consulta-cliente.module#ConsultaClientePageModule'
   },
-  { path: 'afericao', loadChildren: './pages/afericao/afericao.module#AfericaoPageModule' },
-  { path: 'consulta-balanca', loadChildren: './pages/consulta-balanca/consulta-balanca.module#ConsultaBalancaPageModule' },
-  { path: 'consulta-ferramenta', loadChildren: './pages/consulta-ferramenta/consulta-ferramenta.module#ConsultaFerramentaPageModule' },
-  { path: 'detalhe-cliente', loadChildren: './pages/detalhe-cliente/detalhe-cliente.module#DetalheClientePageModule' }
+  {
+    path: 'afericao',
+    loadChildren: './pages/afericao/afericao.module#AfericaoPageModule',
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'consulta-balanca',
+    loadChildren: './pages/consulta-balanca/consulta-balanca.module#ConsultaBalancaPageModule',
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'consulta-ferramenta',
+    loadChildren:
+      './pages/consulta-ferramenta/consulta-ferramenta.module#ConsultaFerramentaPageModule',
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'detalhe-cliente',
+    loadChildren: './pages/detalhe-cliente/detalhe-cliente.module#DetalheClientePageModule',
+    canActivate: [AuthGuard]
+  }
 ];
 
 @NgModule({

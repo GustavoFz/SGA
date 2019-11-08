@@ -4,7 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { NavController } from '@ionic/angular';
 
 import { AuthService } from 'src/app/services/auth.service';
-import { AuthProvider } from 'src/app/services/auth.types';
+import { AuthProvider } from 'src/app/interfaces/auth.types';
 import { OverlayService } from 'src/app/services/overlay.service';
 import { MessageService } from 'src/app/services/message.service';
 

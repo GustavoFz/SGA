@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from '@ionic/angular';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -7,7 +8,7 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['home.page.scss']
 })
 export class HomePage {
-  constructor(public navCtrl: NavController) {}
+  constructor(public navCtrl: NavController, private authService: AuthService) {}
   public appPages = [
     {
       title: 'Clientes',
@@ -31,7 +32,7 @@ export class HomePage {
     }
   ];
 
-  backLogin() {
-    this.navCtrl.navigateRoot('/login');
+  logout() {
+    this.authService.logout();
   }
 }
