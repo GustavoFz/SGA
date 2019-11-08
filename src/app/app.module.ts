@@ -17,10 +17,11 @@ import { environment } from 'src/environments/environment';
 import { ModalClientesComponent } from './components/modal-clientes/modal-clientes.component';
 import { ComponentsModule } from './components/components.module';
 import { ModalBalancasComponent } from './components/modal-balancas/modal-balancas.component';
+import { ModalFerramentasComponent } from './components/modal-ferramentas/modal-ferramentas.component';
 
 @NgModule({
   declarations: [AppComponent],
-  entryComponents: [ModalClientesComponent, ModalBalancasComponent],
+  entryComponents: [ModalClientesComponent, ModalBalancasComponent, ModalFerramentasComponent],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
