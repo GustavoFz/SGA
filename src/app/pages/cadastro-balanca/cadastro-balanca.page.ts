@@ -34,6 +34,14 @@ export class CadastroBalancaPage implements OnInit, OnDestroy {
     }
   }
 
+  private createForm(): void {
+    this.balancaForm = this.formBuilder.group({
+      modelo: ['', [Validators.required]],
+      fabricante: ['', [Validators.required]],
+      cargaMaxima: ['', [Validators.required]]
+    });
+  }
+
   ngOnInit() {
     this.createForm();
   }
@@ -48,14 +56,6 @@ export class CadastroBalancaPage implements OnInit, OnDestroy {
     this.balancaSubscription = this.balancaService.getBalanca(this.balancaId).subscribe(data => {
       this.balanca = data;
       this.balancaForm.setValue({ ...data });
-    });
-  }
-
-  private createForm(): void {
-    this.balancaForm = this.formBuilder.group({
-      modelo: ['', [Validators.required]],
-      fabricante: ['', [Validators.required]],
-      cargaMaxima: ['', [Validators.required]]
     });
   }
 

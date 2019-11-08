@@ -7,7 +7,7 @@
 
   <div class="login-container">
     <form class="login-form" [formGroup]="authForm" (submit)="onSubmit(authProviders.Email)">
-      <ion-item class="ion-margin-top" lines="none">
+      <ion-item class="ion-margin-top">
         <ion-icon name="mail" color="primary" slot="start"></ion-icon>
         <ion-input type="email" placeholder="E-mail" formControlName="email" inputmode="email" autofocus="true">
         </ion-input>
@@ -19,14 +19,14 @@
         </ion-note>
       </ion-item>
 
-      <ion-item class="ion-margin-top" lines="none">
+      <ion-item class="ion-margin-top">
         <ion-icon name="lock" color="primary" slot="start"></ion-icon>
         <ion-input type="password" placeholder="Senha" formControlName="password"></ion-input>
         <ion-note slot="end" color="danger" *ngIf="password.dirty && password.hasError('required')">
           Obrigatório
         </ion-note>
         <ion-note slot="end" color="danger" *ngIf="password.dirty && password.hasError('minlength')">
-          A senha deve possuior 6 caracteres.
+          Minimo 6 caracteres.
         </ion-note>
       </ion-item>
       <ion-button color="primary" expand="block" type="submit" [disabled]="authForm.invalid">
