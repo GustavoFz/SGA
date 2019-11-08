@@ -1,9 +1,59 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>consulta-balanca</ion-title>
+    <ion-title>Consulta de Balanças</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
-
+<ion-searchbar
+  placeholder="Pesquisar balanças"
+  [(ngModel)]="searchTerm"
+  (ionChange)="setFilteredItems()"
+></ion-searchbar>
 <ion-content>
+  <ion-list *ngIf="!balancas.length">
+    <ion-item *ngFor="let item of [0, 1, 2]">
+      <ion-avatar slot="start">
+        <ion-skeleton-text animated></ion-skeleton-text>
+      </ion-avatar>
+      <ion-label>
+        <h3>
+          <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+        </h3>
+        <p>
+          <ion-skeleton-text animated style="width: 80%"></ion-skeleton-text>
+        </p>
+        <p>
+          <ion-skeleton-text animated style="width: 30%"></ion-skeleton-text>
+        </p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
 
+  <ion-list>
+    <ion-item-sliding *ngFor="let balanca of balancasFiltered">
+      <ion-item button [routerLink]="['/balanca', balanca.id]">
+        <ion-label>
+          {{ balanca.modelo }}
+          <p>{{ balanca.fabricante }}</p>
+          <p>{{ balanca.cargaMaxima }}</p>
+        </ion-label>
+      </ion-item>
+
+      <ion-item-options side="end">
+        <ion-item-option color="danger">
+          <ion-icon slot="top" name="trash"></ion-icon>
+          Excluir
+        </ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
 </ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-button color="primary" expand="block" routerLink="/cadastro-balanca">
+      Nova balança
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>
