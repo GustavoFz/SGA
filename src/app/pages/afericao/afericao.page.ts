@@ -1,8 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { IonSlides, ModalController } from '@ionic/angular';
+import { IonSlides, ModalController, NavController } from '@ionic/angular';
 import { ModalClientesComponent } from 'src/app/components/modal-clientes/modal-clientes.component';
 import { ModalBalancasComponent } from 'src/app/components/modal-balancas/modal-balancas.component';
+import { ModalFerramentasComponent } from 'src/app/components/modal-ferramentas/modal-ferramentas.component';
 
 @Component({
   selector: 'app-afericao',
@@ -11,14 +12,19 @@ import { ModalBalancasComponent } from 'src/app/components/modal-balancas/modal-
 })
 export class AfericaoPage implements OnInit {
   afericaoForm: FormGroup;
-  cliente: any = null;
-  balanca: any = null;
+  cliente: any = '';
+  balanca: any = '';
+  ferramenta: any = '';
   slideOpts = {
     initialSlide: 0,
     speed: 400
   };
 
-  constructor(private formBuilder: FormBuilder, private modalCtrl: ModalController) {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private modalCtrl: ModalController,
+    public navCtrl: NavController
+  ) {}
 
   @ViewChild('mySlider', { static: true }) slides: IonSlides;
 
@@ -45,6 +51,9 @@ export class AfericaoPage implements OnInit {
   prevSlide() {
     this.slides.slidePrev();
   }
+  close() {
+    this.navCtrl.back();
+  }
 
   onSubmit() {
     console.log(this.afericaoForm.value);
@@ -66,12 +75,23 @@ export class AfericaoPage implements OnInit {
     const modal = await this.modalCtrl.create({
       component: ModalBalancasComponent,
       componentProps: {
-        clienteId: '3IFm78M4yXIjXeZtRzXX'
+        clienteId: this.cliente
       }
     });
     modal.present();
 
     const { data } = await modal.onDidDismiss();
     this.balanca = data;
+  }
+
+  async modalFerramenta() {
+    console.log('modalFerramenta');
+    const modal = await this.modalCtrl.create({
+      component: ModalFerramentasComponent
+    });
+    modal.present();
+
+    const { data } = await modal.onDidDismiss();
+    this.ferramenta = data;
   }
 }

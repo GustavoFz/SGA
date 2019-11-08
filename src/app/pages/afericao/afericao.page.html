@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>Afericao</ion-title>
-    <ion-buttons slot="start">
+    <ion-buttons slot="start" (click)="close()">
       <ion-icon slot="end" name="close"></ion-icon>
     </ion-buttons>
   </ion-toolbar>
@@ -14,19 +14,19 @@
         <h2>Dados para Aferição</h2>
         <ion-list>
           <ion-item class="ion-margin-top">
-            <ion-label>Cliente:</ion-label>
+            <ion-label>Cliente: {{cliente.nome}}</ion-label>
             <ion-button slot="end" (click)="modalCliente()">
               <ion-icon slot="icon-only" name="search"></ion-icon>
             </ion-button>
           </ion-item>
           <ion-item class="ion-margin-top">
-            <ion-label>Balanca:</ion-label>
+            <ion-label>Balanca: {{balanca.modelo}}</ion-label>
             <ion-button slot="end" (click)="modalBalanca()">
               <ion-icon slot="icon-only" name="search"></ion-icon>
             </ion-button>
           </ion-item>
           <ion-item class="ion-margin-top" lines="none">
-            <ion-label>Ferramentas:</ion-label>
+            <ion-label>Ferramentas: {{ferramenta.nome}}</ion-label>
             <ion-button slot="end" (click)="modalFerramenta()">
               <ion-icon slot="icon-only" name="search"></ion-icon>
             </ion-button>
