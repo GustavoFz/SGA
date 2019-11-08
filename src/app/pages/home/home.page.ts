@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -6,28 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['home.page.scss']
 })
 export class HomePage {
-  constructor() {}
+  constructor(public navCtrl: NavController) {}
   public appPages = [
-    {
-      title: 'Home',
-      url: '/home',
-      icon: 'home'
-    },
-    {
-      title: 'Cadastro de clientes',
-      url: '/cadastro-cliente',
-      icon: 'person-add'
-    },
-    {
-      title: 'Cadastro de balanças',
-      url: '/cadastro-balanca',
-      icon: 'list'
-    },
-    {
-      title: 'Cadastro de ferramentas',
-      url: '/cadastro-ferramenta',
-      icon: 'construct'
-    },
     {
       title: 'Clientes',
       url: '/consulta-cliente',
@@ -49,4 +30,8 @@ export class HomePage {
       icon: 'list'
     }
   ];
+
+  backLogin() {
+    this.navCtrl.navigateRoot('/login');
+  }
 }
