@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { IonSlides, ModalController, NavController } from '@ionic/angular';
+import { IonSlides, ModalController, NavController, AlertController } from '@ionic/angular';
 import { ModalClientesComponent } from 'src/app/components/modal-clientes/modal-clientes.component';
 import { ModalBalancasComponent } from 'src/app/components/modal-balancas/modal-balancas.component';
 import { ModalFerramentasComponent } from 'src/app/components/modal-ferramentas/modal-ferramentas.component';
@@ -23,7 +23,8 @@ export class AfericaoPage implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private modalCtrl: ModalController,
-    public navCtrl: NavController
+    public navCtrl: NavController,
+    public alertController: AlertController
   ) {}
 
   @ViewChild('mySlider', { static: true }) slides: IonSlides;
@@ -53,6 +54,17 @@ export class AfericaoPage implements OnInit {
   }
   close() {
     this.navCtrl.back();
+  }
+
+  async mensagem() {
+    const alert = await this.alertController.create({
+      header: 'Aferição concluida ',
+      message: 'A balança está calibrada',
+      buttons: ['OK']
+    });
+
+    await alert.present();
+    this.navCtrl.navigateForward('home');
   }
 
   onSubmit() {

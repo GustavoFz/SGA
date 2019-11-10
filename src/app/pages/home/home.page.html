@@ -10,8 +10,8 @@
 <ion-content class="ion-padding">
   <ion-list >
     <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
-      <ion-item [routerDirection]="'root'" [routerLink]="[p.url]">
-        <ion-icon slot="start" [name]="p.icon"></ion-icon>
+      <ion-item button [routerDirection]="'root'" [routerLink]="[p.url]">
+        <ion-icon slot="start" [name]="p.icon" [src]="p.src"></ion-icon>
         <ion-label>
           {{ p.title }}
         </ion-label>

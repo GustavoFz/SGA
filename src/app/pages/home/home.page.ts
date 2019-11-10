@@ -16,19 +16,27 @@ export class HomePage {
       icon: 'people'
     },
     {
-      title: 'Ferramentas',
-      url: '/consulta-ferramenta',
-      icon: 'list'
-    },
-    {
       title: 'Balanças',
       url: '/consulta-balanca',
-      icon: 'list'
+      icon: 'fitness',
+      src: 'assets/icon/balanca.svg'
     },
     {
-      title: 'Realizar aferição',
+      title: 'Ferramentas',
+      url: '/consulta-ferramenta',
+      icon: 'construct'
+    },
+
+    {
+      title: 'Realizar Aferição',
       url: '/afericao',
-      icon: 'list'
+      icon: 'funnel',
+      src: 'assets/icon/afericao.svg'
+    },
+    {
+      title: 'Documentos',
+      //url: '',
+      icon: 'document'
     }
   ];
 
