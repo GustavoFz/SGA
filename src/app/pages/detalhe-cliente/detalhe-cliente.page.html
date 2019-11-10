@@ -1,9 +1,12 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>detalhe-cliente</ion-title>
+    <ion-title>Detalhe cliente</ion-title>
+    <ion-buttons slot="start" (click)="back()">
+      <ion-icon slot="end" name="arrow-back"></ion-icon>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  {{ cliente.nome }}
 </ion-content>

@@ -33,7 +33,7 @@
 
   <ion-list>
     <ion-item-sliding *ngFor="let cliente of clientesFiltered">
-      <ion-item button [routerLink]="['/cliente', cliente.id]">
+      <ion-item button [routerLink]="['/detalhe-cliente', cliente.id]">
         <ion-label>
           {{ cliente.nome }}
           <p>{{ cliente.cnpj }}</p>

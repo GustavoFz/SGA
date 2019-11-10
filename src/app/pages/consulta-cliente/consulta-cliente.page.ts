@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ClienteService } from 'src/app/services/cliente.service';
 import { Subscription } from 'rxjs';
 import { Cliente } from 'src/app/interfaces/cliente';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-consulta-cliente',
@@ -15,7 +16,7 @@ export class ConsultaClientePage implements OnInit, OnDestroy {
   searchTerm: any = '';
   clientesFiltered: any;
 
-  constructor(private clienteService: ClienteService) {}
+  constructor(private clienteService: ClienteService, public navCtrl: NavController) {}
   ngOnInit() {
     this.clientesSubscription = this.clienteService.getClientes().subscribe(data => {
       this.clientes = data;

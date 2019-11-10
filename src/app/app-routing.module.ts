@@ -60,6 +60,11 @@ const routes: Routes = [
     path: 'detalhe-cliente',
     loadChildren: './pages/detalhe-cliente/detalhe-cliente.module#DetalheClientePageModule',
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'detalhe-cliente/:id',
+    loadChildren: './pages/detalhe-cliente/detalhe-cliente.module#DetalheClientePageModule',
+    canActivate: [AuthGuard]
   }
 ];
 
