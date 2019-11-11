@@ -2,8 +2,11 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { IonSlides, ModalController, NavController, AlertController } from '@ionic/angular';
 import { ModalClientesComponent } from 'src/app/components/modal-clientes/modal-clientes.component';
-import { ModalBalancasComponent } from 'src/app/components/modal-balancas/modal-balancas.component';
-import { ModalFerramentasComponent } from 'src/app/components/modal-ferramentas/modal-ferramentas.component';
+import { Subscription } from 'rxjs';
+import { Ferramenta } from 'src/app/interfaces/ferramenta';
+import { FerramentaService } from 'src/app/services/ferramenta.service';
+import { BalancaService } from 'src/app/services/balanca.service';
+import { Balanca } from 'src/app/interfaces/balanca';
 
 @Component({
   selector: 'app-afericao',
@@ -13,24 +16,41 @@ import { ModalFerramentasComponent } from 'src/app/components/modal-ferramentas/
 export class AfericaoPage implements OnInit {
   afericaoForm: FormGroup;
   cliente: any = '';
-  balanca: any = '';
-  ferramenta: any = '';
   slideOpts = {
     initialSlide: 0,
     speed: 400
   };
+  private balancasSubscription: Subscription;
+  public balancas = new Array<Balanca>();
+  private ferramentasSubscription: Subscription;
+  public ferramentas = new Array<Ferramenta>();
 
   constructor(
     private formBuilder: FormBuilder,
     private modalCtrl: ModalController,
     public navCtrl: NavController,
-    public alertController: AlertController
+    public alertController: AlertController,
+    public ferramentaService: FerramentaService,
+    public balancaService: BalancaService
   ) {}
 
   @ViewChild('mySlider', { static: true }) slides: IonSlides;
 
   ngOnInit() {
     this.createForm();
+    this.getFerramentas();
+    this.getBalancas();
+  }
+
+  getBalancas() {
+    this.balancasSubscription = this.balancaService.getBalancas().subscribe(data => {
+      this.balancas = data;
+    });
+  }
+  getFerramentas() {
+    this.ferramentasSubscription = this.ferramentaService.getFerramentas().subscribe(data => {
+      this.ferramentas = data;
+    });
   }
 
   private createForm(): void {
@@ -80,30 +100,5 @@ export class AfericaoPage implements OnInit {
 
     const { data } = await modal.onDidDismiss();
     this.cliente = data;
-  }
-
-  async modalBalanca() {
-    console.log('modalBalanca');
-    const modal = await this.modalCtrl.create({
-      component: ModalBalancasComponent,
-      componentProps: {
-        clienteId: this.cliente
-      }
-    });
-    modal.present();
-
-    const { data } = await modal.onDidDismiss();
-    this.balanca = data;
-  }
-
-  async modalFerramenta() {
-    console.log('modalFerramenta');
-    const modal = await this.modalCtrl.create({
-      component: ModalFerramentasComponent
-    });
-    modal.present();
-
-    const { data } = await modal.onDidDismiss();
-    this.ferramenta = data;
   }
 }

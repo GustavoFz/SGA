@@ -14,22 +14,26 @@
         <h2>Dados para Aferição</h2>
         <ion-list>
           <ion-item class="ion-margin-top">
-            <ion-label>Cliente: {{cliente.nome}}</ion-label>
+            <ion-label>Cliente: {{ cliente.nome }}</ion-label>
             <ion-button slot="end" (click)="modalCliente()">
               <ion-icon slot="icon-only" name="search"></ion-icon>
             </ion-button>
           </ion-item>
           <ion-item class="ion-margin-top">
-            <ion-label>Balanca: {{balanca.modelo}}</ion-label>
-            <ion-button slot="end" (click)="modalBalanca()">
-              <ion-icon slot="icon-only" name="search"></ion-icon>
-            </ion-button>
+            <ion-label>Balanca:</ion-label>
+            <ion-select cancelText="Fechar" okText="Selecionar">
+              <ion-select-option *ngFor="let balanca of balancas" [value]="balanca.id">
+                {{ balanca.modelo }}
+              </ion-select-option>
+            </ion-select>
           </ion-item>
           <ion-item class="ion-margin-top">
-            <ion-label>Ferramentas: {{ferramenta.nome}}</ion-label>
-            <ion-button slot="end" (click)="modalFerramenta()">
-              <ion-icon slot="icon-only" name="search"></ion-icon>
-            </ion-button>
+            <ion-label>Ferramentas:</ion-label>
+            <ion-select multiple="true" cancelText="Fechar" okText="Selecionar">
+              <ion-select-option *ngFor="let ferramenta of ferramentas" [value]="ferramenta.id">
+                {{ ferramenta.nome }}
+              </ion-select-option>
+            </ion-select>
           </ion-item>
           <ion-item class="ion-margin-top">
             <ion-label position="floating">Temperatura</ion-label>
