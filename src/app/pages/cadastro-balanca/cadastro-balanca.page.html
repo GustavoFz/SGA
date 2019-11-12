@@ -23,7 +23,12 @@
 
       <ion-item class="ion-margin-top" lines="none">
         <ion-label position="floating">Carga Maxima(Kg)</ion-label>
-        <ion-input type="number" placeholder="1000.00" formControlName="cargaMaxima"></ion-input>
+        <ion-input
+        type="text"
+        placeholder="1000.00"
+        formControlName="cargaMaxima"
+        [brmasker]="{mask: '00000.00', type:'num', len:8}"
+        ></ion-input>
       </ion-item>
 
       <ion-item class="ion-margin-top" lines="none">

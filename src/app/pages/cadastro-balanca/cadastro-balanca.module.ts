@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { CadastroBalancaPage } from './cadastro-balanca.page';
 import { ComponentsModule } from 'src/app/components/components.module';
+import { BrMaskerModule } from 'br-mask';
 
 const routes: Routes = [
   {
@@ -22,7 +23,8 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes),
     ReactiveFormsModule,
-    ComponentsModule
+    ComponentsModule,
+    BrMaskerModule
   ],
   declarations: [CadastroBalancaPage]
 })
