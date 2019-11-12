@@ -24,7 +24,7 @@ export class CadastroClientePage implements OnInit, OnDestroy {
     private clienteService: ClienteService,
     private overlayService: OverlayService,
     private activatedRoute: ActivatedRoute,
-    private navCtrl: NavController,
+    private navCtrl: NavController
   ) {
     this.clienteId = this.activatedRoute.snapshot.params.id;
 
@@ -46,7 +46,7 @@ export class CadastroClientePage implements OnInit, OnDestroy {
   loadCliente() {
     this.clienteSubscription = this.clienteService.getCliente(this.clienteId).subscribe(data => {
       this.cliente = data;
-      this.clienteForm.setValue({...data});
+      this.clienteForm.setValue({ ...data });
     });
   }
 
@@ -69,11 +69,11 @@ export class CadastroClientePage implements OnInit, OnDestroy {
     try {
       if (this.clienteId) {
         await this.clienteService.updateCliente(this.clienteId, this.cliente);
-        this.overlayService.toast({message: 'Cliente atualizado com sucesso.'});
+        this.overlayService.toast({ message: 'Cliente atualizado com sucesso.' });
       } else {
         this.cliente.createdAt = new Date();
         await this.clienteService.addCliente(this.cliente);
-        this.overlayService.toast({message: 'Cliente criado com sucesso.'});
+        this.overlayService.toast({ message: 'Cliente criado com sucesso.' });
       }
     } catch (e) {
       this.overlayService.alert({ message: 'Erro ao salvar cliente', buttons: ['Ok'] });

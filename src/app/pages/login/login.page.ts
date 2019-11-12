@@ -71,9 +71,22 @@ export class LoginPage implements OnInit {
       });
       this.navCtrl.navigateForward(this.route.snapshot.queryParamMap.get('redirect') || '/home');
     } catch (e) {
-      console.error('Auth error: ', e);
+      let message: string;
+
+      switch (e.code) {
+        case 'auth/user-not-found':
+          message = 'Usuário não existe.';
+          break;
+        case 'auth/wrong-password':
+          message = 'Senha incorreta.';
+          break;
+        case 'auth/too-many-requests':
+          message = 'Parece que você tentou fazer login muitas vezes. Tente novamente mais tarde.';
+          break;
+      }
+      console.error('Auth error : ', e);
       await this.overlayService.toast({
-        message: e.message
+        message
       });
     } finally {
       loading.dismiss();
