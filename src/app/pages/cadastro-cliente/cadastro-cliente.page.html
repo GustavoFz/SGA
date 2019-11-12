@@ -13,10 +13,12 @@
       <ion-item class="ion-margin-top" lines="none">
         <ion-label position="floating">CNPJ</ion-label>
         <ion-input
-          type="number"
+          type="text"
           placeholder="000.000.000/0001-00"
           formControlName="cnpj"
           autofocus="true"
+          name="cpf"
+          [brmasker]="{person: true}"
         >
         </ion-input>
       </ion-item>
@@ -34,15 +36,22 @@
       <ion-item class="ion-margin-top" lines="none">
         <ion-label position="floating">Telefone</ion-label>
         <ion-input
-          type="number"
+          type="text"
+          name="phone"
           placeholder="(69) 90000-0000"
           formControlName="telefone"
+          [brmasker]="{phone: true}"
         ></ion-input>
       </ion-item>
 
       <ion-item class="ion-margin-top" lines="none">
         <ion-label position="floating">CEP</ion-label>
-        <ion-input type="number" placeholder="00000-000" formControlName="cep"></ion-input>
+        <ion-input
+        type="text"
+        placeholder="00000-000"
+        formControlName="cep"
+        [brmasker]="{mask: '00000-000',len:9, type:'num'}"
+        ></ion-input>
       </ion-item>
     </form>
   </div>
