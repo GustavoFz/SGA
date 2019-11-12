@@ -21,7 +21,7 @@
           </ion-item>
           <ion-item class="ion-margin-top">
             <ion-label>Balanca:</ion-label>
-            <ion-select cancelText="Fechar" okText="Selecionar">
+            <ion-select cancelText="Fechar" okText="Selecionar" formControlName="balanca">
               <ion-select-option *ngFor="let balanca of balancas" [value]="balanca.id">
                 {{ balanca.modelo }}
               </ion-select-option>
@@ -29,8 +29,8 @@
           </ion-item>
           <ion-item class="ion-margin-top">
             <ion-label>Ferramentas:</ion-label>
-            <ion-select multiple="true" cancelText="Fechar" okText="Selecionar">
-              <ion-select-option *ngFor="let ferramenta of ferramentas" [value]="ferramenta.id">
+            <ion-select multiple="true" cancelText="Fechar" okText="Selecionar" formControlName="ferramenta">
+              <ion-select-option *ngFor="let ferramenta of ferramentass" [value]="ferramenta.id" >
                 {{ ferramenta.nome }}
               </ion-select-option>
             </ion-select>

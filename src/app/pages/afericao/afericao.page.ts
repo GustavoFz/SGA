@@ -32,7 +32,7 @@ export class AfericaoPage implements OnInit {
     public alertController: AlertController,
     public ferramentaService: FerramentaService,
     public balancaService: BalancaService
-  ) {}
+  ) { }
 
   @ViewChild('mySlider', { static: true }) slides: IonSlides;
 
@@ -55,6 +55,8 @@ export class AfericaoPage implements OnInit {
 
   private createForm(): void {
     this.afericaoForm = this.formBuilder.group({
+      balanca: ['', [Validators.required]],
+      ferramenta: ['', [Validators.required]],
       pesoCentro: ['', [Validators.required]],
       pesoCanto1: ['', [Validators.required]],
       pesoCanto2: ['', [Validators.required]],
